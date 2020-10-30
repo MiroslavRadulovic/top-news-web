@@ -2,8 +2,31 @@
   height: 100vh;
 
   .layout__header {
-    display: flex;
-    justify-content: space-between;
+    position: fixed;
+    right: 0;
+    left: 0;
+    display: inherit;
+
+    .layout__header-nav {
+      width: 25%;
+    }
+
+    .layout__header-nav-search-bar-container {
+      width: 50%;
+    }
+
+    .layout__header-country-select {
+      float: right;
+      width: 25%;
+
+      li {
+        float: right;
+      }
+    }
+
+    .active-link {
+      color: #1890ff;
+    }
 
     .layout__header-nav,
     .layout__header-country-select {
@@ -13,10 +36,30 @@
         background: transparent;
         color: #1890ff;
       }
+
+      li a:hover {
+        background: transparent;
+        color: #1890ff !important;
+      }
+
+      .layout__header-nav-search {
+        color: rgba(255, 255, 255, 0.65);
+
+        .ant-menu-item-selected {
+          &:hover {
+            background: transparent;
+            color: #1890ff;
+          }
+        }
+      }
     }
 
-    .layout__header-nav-search-bar {
-        
+    .layout__header-nav-search-bar-container {
+      display: flex;
+      align-items: center;
+
+      .layout__header-nav-search-bar {
+      }
     }
   }
 }

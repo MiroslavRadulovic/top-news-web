@@ -4,11 +4,14 @@ import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { NewsContextProvider } from "./context/NewsContext";
+import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
-  <NewsContextProvider>
-    <App />
-  </NewsContextProvider>,
+  <Router>
+    <NewsContextProvider>
+      <App />
+    </NewsContextProvider>
+  </Router>,
   document.getElementById("root")
 );
 
