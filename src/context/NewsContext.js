@@ -8,14 +8,11 @@ export const NewsContextProvider = (props) => {
   const apiKey = process.env.REACT_APP_NEWS_API_KEY;
 
   useEffect(() => {
-    console.log(apiKey);
     instance
-      .get(
-        `top-headlines?country=us&apiKey=${apiKey}`
-      )
+      .get(`top-headlines?country=us&apiKey=${apiKey}`)
       .then((response) => setData(response.data))
       .catch((error) => console.log(error));
-  }, []);
+  }, [apiKey]);
 
   return (
     <NewsContext.Provider value={{ data }}>

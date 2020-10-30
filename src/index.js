@@ -1,16 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { NewsContextProvider } from "./context/NewsContext";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <NewsContextProvider>
-      <App />
-    </NewsContextProvider>
-  </React.StrictMode>,
+  <NewsContextProvider>
+    <App />
+  </NewsContextProvider>,
   document.getElementById("root")
 );
 

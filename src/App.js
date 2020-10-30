@@ -1,10 +1,12 @@
-import "./App.css";
+import "./App.scss";
+
+import Layout from "./components/hoc/layout/Layout";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Welcome to Top News </h1>
-    </div>
+    <Layout>
+      <h1>Content</h1>
+    </Layout>
   );
 }
 
