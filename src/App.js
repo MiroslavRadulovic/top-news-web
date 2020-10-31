@@ -1,4 +1,5 @@
-import { Route } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
+import { NewsContextProvider } from "./context/NewsContext";
 import "./App.scss";
 
 import Layout from "./components/hoc/layout/Layout";
@@ -8,10 +9,15 @@ import Categories from "./components/pages/Categories/Categories";
 
 function App() {
   return (
-    <Layout>
-      <Route exact path="/news" component={TopNews} />
-      <Route exact path="/categories" component={Categories} />
-    </Layout>
+    <NewsContextProvider>
+      <Switch>
+        <Layout>
+          <Route path="/news" component={TopNews} />
+          <Route path="/categories" component={Categories} />
+          <Redirect to="/news" />
+        </Layout>
+      </Switch>
+    </NewsContextProvider>
   );
 }
 

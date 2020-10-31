@@ -3,14 +3,11 @@ import ReactDOM from "react-dom";
 import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { NewsContextProvider } from "./context/NewsContext";
 import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
   <Router>
-    <NewsContextProvider>
-      <App />
-    </NewsContextProvider>
+    <App />
   </Router>,
   document.getElementById("root")
 );
