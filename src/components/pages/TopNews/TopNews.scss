@@ -8,6 +8,17 @@
       width: 300px;
       margin: 10px;
       margin-left: 0;
+
+      .ant-card-body {
+        height: 150px;
+      }
+
+      .ant-card-meta-description {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
+      }
     }
   }
 }
