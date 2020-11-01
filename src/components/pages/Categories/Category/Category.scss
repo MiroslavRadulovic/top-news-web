@@ -1,0 +1,11 @@
+.category__card-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 30px;
+
+  .category__card {
+    width: 300px;
+    margin: 10px;
+    margin-left: 0;
+  }
+}
