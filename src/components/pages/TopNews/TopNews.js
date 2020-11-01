@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { NewsContext } from "../../../context/NewsContext";
 
+import Card from "../../common/Card/Card";
 import Loader from "../../common/Loader/Loader";
 import "./TopNews.scss";
 
@@ -8,12 +9,22 @@ const TopNews = () => {
   const [data, country] = useContext(NewsContext);
 
   return (
-    <div>
-      <h1>Top News from {country === "gb" ? "Great Britain" : "USA"}</h1>
+    <div className="top-news">
+      <h1>Top News from {country === "gb" ? "Great Britain" : "United States"}</h1>
       {data.length === 0 && <Loader />}
-      {data.map((item) => (
-        <h3 key={item.title}>{item.title}</h3>
-      ))}
+      <div className="top-news__card-container">
+        {data.map((item) => (
+          <Card
+            key={item.title}
+            title={item.title}
+            description={
+              item.description || "No description available for this article."
+            }
+            img={item.urlToImage}
+            className="top-news__card"
+          />
+        ))}
+      </div>
     </div>
   );
 };

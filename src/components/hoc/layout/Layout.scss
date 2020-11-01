@@ -1,11 +1,12 @@
 .layout {
-  height: 100vh;
+  min-height: 100vh;
 
   .layout__header {
     position: fixed;
     right: 0;
     left: 0;
     display: inherit;
+    z-index: 1;
 
     .layout__header-nav {
       width: 25%;

@@ -1,0 +1,12 @@
+.top-news {
+  .top-news__card-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 30px;
+
+    .top-news__card {
+      width: 300px;
+      margin: 10px;
+    }
+  }
+}
