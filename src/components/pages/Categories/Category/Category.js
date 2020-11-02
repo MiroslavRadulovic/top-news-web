@@ -2,33 +2,37 @@ import React, { useState, useEffect, useContext } from "react";
 import instance from "../../../../lib/axiosConfig";
 import Carousel from "react-elastic-carousel";
 import { NewsContext } from "../../../../context/NewsContext";
+import { Result, Button } from "antd";
 
 import Card from "../../../common/Card/Card";
 import "./Category.scss";
 
 const Category = (props) => {
   const [catData, setCatData] = useState([]);
+  const [error, setError] = useState(false);
   const [, country] = useContext(NewsContext);
 
   const apiKey = process.env.REACT_APP_NEWS_API_KEY;
 
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
-    { width: 270, itemsToShow: 2 },
-    { width: 520, itemsToShow: 3 },
-    { width: 770, itemsToShow: 4 },
-    { width: 1020, itemsToShow: 5 },
+    { width: 410, itemsToShow: 2 },
+    { width: 660, itemsToShow: 3 },
+    { width: 910, itemsToShow: 4 },
+    { width: 1030, itemsToShow: 5 },
   ];
 
   useEffect(() => {
     if (props.categoryName) {
       const _category = props.categoryName.toLowerCase();
-      const url = `top-headlines?country=${country}&category=${_category}&pageSize=5&apiKey=${apiKey}`;
+      const url = `top-headlines?country=${country}&category=${_category}&apiKey=${apiKey}`;
 
       instance
         .get(url)
         .then((response) => setCatData(response.data.articles))
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          setError(true);
+        });
     }
 
     return () => {
@@ -38,21 +42,40 @@ const Category = (props) => {
 
   return (
     <div className="category__card-container">
-      <Carousel breakPoints={breakPoints}>
-        {catData.map((item) => (
-          <Card
-            key={item.title}
-            title={item.title}
-            description={
-              item.description || "No description available for this article."
+      {error && (
+        <div className="category__problems-container">
+          <Result
+            status="warning"
+            title="There are some problems with fetching news in this category. Try to reload the page."
+            extra={
+              <Button
+                type="primary"
+                key="console"
+                onClick={() => window.location.reload()}
+              >
+                Reload
+              </Button>
             }
-            img={item.urlToImage}
-            content={item.content}
-            categoryName={props.categoryName}
-            className="category__card"
           />
-        ))}
-      </Carousel>
+        </div>
+      )}
+      {!error && (
+        <Carousel breakPoints={breakPoints}>
+          {catData.map((item) => (
+            <Card
+              key={item.title}
+              title={item.title}
+              description={
+                item.description || "No description available for this article."
+              }
+              img={item.urlToImage}
+              content={item.content}
+              categoryName={props.categoryName}
+              className="category__card"
+            />
+          ))}
+        </Carousel>
+      )}
     </div>
   );
 };
