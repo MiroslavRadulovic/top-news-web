@@ -19,11 +19,7 @@ const Category = (props) => {
       instance
         .get(url)
         .then((response) => setCatData(response.data.articles))
-        .catch((error) => {
-          if (error && error.data) {
-            console.log(error.data);
-          }
-        });
+        .catch((error) => console.log(error));
     }
 
     return () => {
@@ -33,14 +29,16 @@ const Category = (props) => {
 
   return (
     <div className="category__card-container">
-      {catData.map((category) => (
+      {catData.map((item) => (
         <Card
-          key={category.title}
-          title={category.title}
+          key={item.title}
+          title={item.title}
           description={
-            category.description || "No description available for this article."
+            item.description || "No description available for this article."
           }
-          img={category.urlToImage}
+          img={item.urlToImage}
+          content={item.content}
+          categoryName={props.categoryName}
           className="category__card"
         />
       ))}

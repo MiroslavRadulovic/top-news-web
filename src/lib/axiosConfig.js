@@ -24,7 +24,7 @@ instance.interceptors.response.use(
   },
   function (error) {
     if (error.response && error.response.status) {
-      if (error.response.status == 429) {
+      if (error.response.status === 429) {
         notification.error({
           message: "Error fetching news data!",
           description: error.response.data.message,

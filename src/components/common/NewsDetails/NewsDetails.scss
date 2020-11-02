@@ -1,0 +1,26 @@
+.news-details__container {
+  margin-top: 15px;
+
+  .news-details__back {
+    cursor: pointer;
+    color: #1890ff;
+    padding-left: 8px;
+    width: 100px;
+    margin-bottom: 50px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    span:nth-child(2) {
+      margin-left: 5px;
+      font-size: 20px;
+    }
+  }
+
+  .news-details__article-container {
+    .news-details__img {
+      min-width: 200px;
+    }
+  }
+}

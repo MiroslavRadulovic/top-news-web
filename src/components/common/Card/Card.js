@@ -1,5 +1,6 @@
 import React from "react";
 import { Card as AntCard, Tooltip } from "antd";
+import { Link } from "react-router-dom";
 import Placeholder from "../../../assets/Images/news-placeholder.png";
 
 const { Meta } = AntCard;
@@ -10,10 +11,25 @@ const Card = (props) => {
       className={props.className}
       hoverable
       cover={
-        <img height="200px" alt={props.title} src={props.img || Placeholder} />
+        <img height="150px" alt={props.title} src={props.img || Placeholder} />
       }
       loading={!(props.title && props.description)}
-      actions={[<a href="#">More</a>]}
+      actions={[
+        <Link
+          to={{
+            pathname: `/${
+              props.categoryName ? "categories" : "news"
+            }/${encodeURI(props.title)}`,
+            state: {
+              title: props.title,
+              img: props.img,
+              content: props.content,
+            },
+          }}
+        >
+          More
+        </Link>,
+      ]}
     >
       <Tooltip title={props.title}>
         <Meta title={props.title} description={props.description} />

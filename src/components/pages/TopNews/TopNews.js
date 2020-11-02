@@ -27,6 +27,7 @@ const TopNews = () => {
               item.description || "No description available for this article."
             }
             img={item.urlToImage}
+            content={item.content}
             className="top-news__card"
           />
         ))}

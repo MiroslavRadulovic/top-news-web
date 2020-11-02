@@ -87,7 +87,7 @@ const Layout = (props) => {
           </Menu.Item>
         </Menu>
       </Header>
-      <Content style={{ padding: "0 5%", marginTop: "80px" }}>
+      <Content style={{ padding: "0 70px", marginTop: "80px" }}>
         <div className="site-layout-content">{props.children}</div>
       </Content>
     </AntLayout>

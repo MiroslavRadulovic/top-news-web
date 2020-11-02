@@ -12,19 +12,19 @@
     padding-bottom: 30px;
 
     .top-news__card {
-      width: 300px;
+      width: 250px;
       margin: 10px;
       margin-left: 0;
 
       .ant-card-body {
-        height: 150px;
+        height: 125px;
       }
 
       .ant-card-meta-description {
         overflow: hidden;
         display: -webkit-box;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 4;
+        -webkit-line-clamp: 3;
       }
     }
   }
