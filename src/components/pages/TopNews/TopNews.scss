@@ -1,5 +1,6 @@
 .top-news {
-  .top-news__loader-container {
+  .top-news__loader-container,
+  .top-news__empty-container {
     display: flex;
     justify-content: center;
     align-items: center;

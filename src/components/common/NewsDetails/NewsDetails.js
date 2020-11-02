@@ -29,10 +29,10 @@ const NewsDetails = (props) => {
         </Col>
         <Col xxl={14} xl={14} lg={14} md={10} sm={24} xs={24}>
           <Row>
-            <Col>
+            <Col span={24}>
               <h1>{title}</h1>
             </Col>
-            <Col>
+            <Col span={24}>
               <p>{content ? content.split("[")[0] : "No content available."}</p>
             </Col>
           </Row>

@@ -1,19 +1,27 @@
 import React, { useContext } from "react";
 import { NewsContext } from "../../../context/NewsContext";
+import { Empty } from "antd";
 
 import Card from "../../common/Card/Card";
 import Loader from "../../common/Loader/Loader";
 import "./TopNews.scss";
 
 const TopNews = () => {
-  const [data, country] = useContext(NewsContext);
+  const [data, country, setCountry, searchData, empty] = useContext(
+    NewsContext
+  );
 
   return (
     <div className="top-news">
       <h1>
         Top News from {country === "gb" ? "Great Britain" : "United States"}
       </h1>
-      {data.length === 0 && (
+      {empty && (
+        <div className="top-news__empty-container">
+          <Empty description="There are no articles with that keyword." />
+        </div>
+      )}
+      {data.length === 0 && !empty && (
         <div className="top-news__loader-container">
           <Loader />
         </div>

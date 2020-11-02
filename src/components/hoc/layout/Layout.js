@@ -8,14 +8,13 @@ const { Header, Content } = AntLayout;
 const { Search } = Input;
 
 const Layout = (props) => {
-  const [data, country, setCountry] = useContext(NewsContext);
+  const [, country, setCountry, searchData] = useContext(NewsContext);
   const [showSearch, setShowSearch] = useState(false);
 
-  const toggleShowSearch = () => setShowSearch(!showSearch);
+  const toggleShowSearch = () => setShowSearch(true);
 
   const onSearch = (value) => {
-    console.log(value);
-    toggleShowSearch();
+    searchData(value);
   };
 
   const setGB = () => setCountry("gb");
