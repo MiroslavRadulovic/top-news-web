@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import instance from "../../../../lib/axiosConfig";
+import Carousel from "react-elastic-carousel";
 import { NewsContext } from "../../../../context/NewsContext";
 
 import Card from "../../../common/Card/Card";
@@ -10,6 +11,14 @@ const Category = (props) => {
   const [, country] = useContext(NewsContext);
 
   const apiKey = process.env.REACT_APP_NEWS_API_KEY;
+
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 270, itemsToShow: 2 },
+    { width: 520, itemsToShow: 3 },
+    { width: 770, itemsToShow: 4 },
+    { width: 1020, itemsToShow: 5 },
+  ];
 
   useEffect(() => {
     if (props.categoryName) {
@@ -29,19 +38,21 @@ const Category = (props) => {
 
   return (
     <div className="category__card-container">
-      {catData.map((item) => (
-        <Card
-          key={item.title}
-          title={item.title}
-          description={
-            item.description || "No description available for this article."
-          }
-          img={item.urlToImage}
-          content={item.content}
-          categoryName={props.categoryName}
-          className="category__card"
-        />
-      ))}
+      <Carousel breakPoints={breakPoints}>
+        {catData.map((item) => (
+          <Card
+            key={item.title}
+            title={item.title}
+            description={
+              item.description || "No description available for this article."
+            }
+            img={item.urlToImage}
+            content={item.content}
+            categoryName={props.categoryName}
+            className="category__card"
+          />
+        ))}
+      </Carousel>
     </div>
   );
 };
