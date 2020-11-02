@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { NewsContext } from "../../../context/NewsContext";
-import { Empty } from "antd";
+import { Empty, Result, Button } from "antd";
 
 import Card from "../../common/Card/Card";
 import Loader from "../../common/Loader/Loader";
@@ -16,29 +16,47 @@ const TopNews = () => {
       <h1>
         Top News from {country === "gb" ? "Great Britain" : "United States"}
       </h1>
+      {!data && (
+        <div className="top-news__problems-container">
+          <Result
+            status="warning"
+            title="There are some problems with fetching top news. Try to reload the page."
+            extra={
+              <Button
+                type="primary"
+                key="console"
+                onClick={() => window.location.reload()}
+              >
+                Reload
+              </Button>
+            }
+          />
+        </div>
+      )}
       {empty && (
         <div className="top-news__empty-container">
           <Empty description="There are no articles with that keyword." />
         </div>
       )}
-      {data.length === 0 && !empty && (
+      {data && data.length === 0 && !empty && (
         <div className="top-news__loader-container">
           <Loader />
         </div>
       )}
       <div className="top-news__card-container">
-        {data.map((item) => (
-          <Card
-            key={item.title}
-            title={item.title}
-            description={
-              item.description || "No description available for this article."
-            }
-            img={item.urlToImage}
-            content={item.content}
-            className="top-news__card"
-          />
-        ))}
+        {data &&
+          data.map((item) => (
+            <Card
+              key={item.title}
+              title={item.title}
+              description={
+                item.description || "No description available for this article."
+              }
+              img={item.urlToImage}
+              content={item.content}
+              className="top-news__card"
+            />
+          ))}
       </div>
     </div>
   );

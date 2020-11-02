@@ -18,7 +18,13 @@ export const NewsContextProvider = (props) => {
 
     instance
       .get(category ? catUrl : url)
-      .then((response) => setData(response.data.articles))
+      .then((response) => {
+        if (!response) {
+          console.log(response);
+          setData(null);
+        }
+        setData(response.data.articles);
+      })
       .catch((error) => console.log(error));
   }, [apiKey, country, category]);
 
