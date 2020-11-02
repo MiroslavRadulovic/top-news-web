@@ -10,8 +10,14 @@ const TopNews = () => {
 
   return (
     <div className="top-news">
-      <h1>Top News from {country === "gb" ? "Great Britain" : "United States"}</h1>
-      {data.length === 0 && <Loader />}
+      <h1>
+        Top News from {country === "gb" ? "Great Britain" : "United States"}
+      </h1>
+      {data.length === 0 && (
+        <div className="top-news__loader-container">
+          <Loader />
+        </div>
+      )}
       <div className="top-news__card-container">
         {data.map((item) => (
           <Card

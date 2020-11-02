@@ -1,4 +1,5 @@
 import axios from "axios";
+import { notification } from "antd";
 
 const config = process.env.REACT_APP_API_HOST;
 const instance = axios.create({
@@ -22,7 +23,14 @@ instance.interceptors.response.use(
     return response;
   },
   function (error) {
-    console.log(error);
+    if (error.response && error.response.status) {
+      if (error.response.status == 429) {
+        notification.error({
+          message: "Error fetching news data!",
+          description: error.response.data.message,
+        });
+      }
+    }
   }
 );
 

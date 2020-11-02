@@ -1,4 +1,11 @@
 .top-news {
+  .top-news__loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 85vh;
+  }
+
   .top-news__card-container {
     display: flex;
     flex-wrap: wrap;
