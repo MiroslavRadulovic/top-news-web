@@ -11,7 +11,7 @@ const Categories = () => {
   //   };
   // }, []);
   return (
-    <div>
+    <div className="categories">
       {categoryList.map((category) => (
         <React.Fragment key={category}>
           <h1>{category}</h1>

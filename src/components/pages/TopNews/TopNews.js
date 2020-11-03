@@ -13,7 +13,7 @@ const TopNews = () => {
 
   return (
     <div className="top-news">
-      <h1>
+      <h1 className="top-news__title">
         Top News from {country === "gb" ? "Great Britain" : "United States"}
       </h1>
       {!data && (

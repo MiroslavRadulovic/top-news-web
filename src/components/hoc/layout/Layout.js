@@ -3,6 +3,7 @@ import { Layout as AntLayout, Menu, Input, Row, Col } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
 import { NewsContext } from "../../../context/NewsContext";
+import classnames from "classnames";
 import "./Layout.scss";
 
 const { Header, Content, Sider } = AntLayout;
@@ -30,7 +31,10 @@ const Layout = (props) => {
   return (
     <AntLayout className="layout">
       <Sider
-        className="layout__sider"
+        className={classnames({
+          layout__sider: true,
+          "sider-not-collapsed": !collapsed,
+        })}
         trigger={null}
         collapsible
         defaultCollapsed={false}
@@ -45,12 +49,24 @@ const Layout = (props) => {
           mode="inline"
           defaultSelectedKeys={["1"]}
         >
-          <Menu.Item className="layout__header-nav-top-news" key="1">
+          <Menu.Item
+            className={classnames({
+              "layout__sider-nav-top-news": true,
+              "layout__sider-nav-top-news-fixed": !collapsed,
+            })}
+            key="1"
+          >
             <NavLink activeClassName="active-link" to="/news">
               Top News
             </NavLink>
           </Menu.Item>
-          <Menu.Item className="layout__header-nav-categories" key="2">
+          <Menu.Item
+            className={classnames({
+              "layout__sider-nav-categories": true,
+              "layout__sider-nav-categories-fixed": !collapsed,
+            })}
+            key="2"
+          >
             <NavLink activeClassName="active-link" to="/categories">
               Categories
             </NavLink>
@@ -96,7 +112,7 @@ const Layout = (props) => {
               />
             </div>
           </Col>
-          <Col xxl={4} xl={4} lg={4} md={5} sm={6} xs={9}>
+          <Col xxl={3} xl={4} lg={4} md={5} sm={6} xs={9}>
             <Menu
               className="layout__header-country-select"
               defaultSelectedKeys={[country]}
@@ -121,8 +137,13 @@ const Layout = (props) => {
           </Col>
         </Row>
       </Header>
-      <Content style={{ padding: "0 70px", marginTop: "80px" }}>
-        <div className="site-layout-content">{props.children}</div>
+      <Content
+        className={classnames({
+          "site-layout-content": true,
+          "site-layout-content-hidden": !collapsed,
+        })}
+      >
+        {props.children}
       </Content>
     </AntLayout>
   );
