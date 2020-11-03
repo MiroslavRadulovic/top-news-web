@@ -33,11 +33,14 @@ const Layout = (props) => {
         className="layout__sider"
         trigger={null}
         collapsible
+        defaultCollapsed={false}
+        onBreakpoint={() => {}}
         collapsed={collapsed}
         collapsedWidth={0}
+        breakpoint="md"
       >
         <Menu
-          // className="layout__header-nav"
+          className="layout__sider-nav"
           theme="dark"
           mode="inline"
           defaultSelectedKeys={["1"]}
@@ -52,26 +55,17 @@ const Layout = (props) => {
               Categories
             </NavLink>
           </Menu.Item>
-          {!showSearch && (
-            <Menu.Item
-              className="layout__header-nav-search"
-              key="3"
-              onClick={toggleShowSearch}
-            >
-              Search
-            </Menu.Item>
-          )}
         </Menu>
       </Sider>
       <Header className="layout__header">
-        <Row align="middle" justify="space-between">
+        <Row gutter={[16, 24]} align="middle" justify="space-between">
           <Col xxl={0} xl={0} lg={0} md={2} sm={2} xs={2}>
             {React.createElement(MenuOutlined, {
               className: "trigger",
               onClick: toggle,
             })}
           </Col>
-          <Col xxl={6} xl={6} lg={8} md={0} sm={0} xs={0}>
+          <Col xxl={5} xl={5} lg={6} md={0} sm={0} xs={0}>
             <Menu
               className="layout__header-nav"
               theme="dark"
@@ -88,32 +82,21 @@ const Layout = (props) => {
                   Categories
                 </NavLink>
               </Menu.Item>
-              {!showSearch && (
-                <Menu.Item
-                  className="layout__header-nav-search"
-                  key="3"
-                  onClick={toggleShowSearch}
-                >
-                  Search
-                </Menu.Item>
-              )}
             </Menu>
           </Col>
-          <Col xxl={12} xl={12} lg={12} md={12} sm={20} xs={16}>
+          <Col xxl={12} xl={12} lg={12} md={10} sm={10} xs={10}>
             <div className="layout__header-nav-search-bar-container">
-              {showSearch && (
-                <Search
-                  className="layout__header-nav-search-bar"
-                  placeholder="Search"
-                  allowClear
-                  enterButton="Search"
-                  size="large"
-                  onSearch={onSearch}
-                />
-              )}
+              <Search
+                className="layout__header-nav-search-bar"
+                placeholder="Search"
+                allowClear
+                enterButton
+                size="large"
+                onSearch={onSearch}
+              />
             </div>
           </Col>
-          <Col xxl={4} xl={4} lg={4} md={4} sm={6} xs={8}>
+          <Col xxl={4} xl={4} lg={4} md={5} sm={6} xs={9}>
             <Menu
               className="layout__header-country-select"
               defaultSelectedKeys={[country]}

@@ -1,5 +1,6 @@
 .layout {
   min-height: 100vh;
+  min-width: 400px;
 
   .trigger {
     font-size: 25px;
@@ -15,15 +16,36 @@
 
   .layout__sider {
     margin-top: 60px;
+
+    .active-link {
+      color: #1890ff;
+    }
+
+    .layout__sider-nav {
+      li:hover,
+      li:active,
+      .ant-menu-item-selected {
+        background: transparent;
+        color: #1890ff;
+      }
+
+      li a:hover {
+        background: transparent;
+        color: #1890ff !important;
+      }
+    }
   }
 
   .layout__header {
     position: fixed;
     width: 100%;
+    height: 67px;
+    // padding: 0;
     // right: 0;
     // left: 0;
     // display: inherit;
     z-index: 1;
+    min-width: 400px;
 
     // .layout__header-nav {
     //   width: 25%;
@@ -94,17 +116,26 @@
 
 @media screen and (min-width: 992px) {
   .layout {
-    .trigger {
+    .trigger,
+    .layout__sider {
       display: none;
     }
   }
 }
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 991px) {
   .layout {
     .layout__header {
       .layout__header-nav {
         display: none;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 643px) {
+  .layout {
+    .layout__header {
+      padding: 0;
     }
   }
 }

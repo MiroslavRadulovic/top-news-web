@@ -20,7 +20,6 @@ export const NewsContextProvider = (props) => {
       .get(category ? catUrl : url)
       .then((response) => {
         if (!response) {
-          console.log(response);
           setData(null);
         }
         setData(response.data.articles);
