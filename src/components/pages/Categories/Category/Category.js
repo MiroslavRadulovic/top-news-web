@@ -12,7 +12,16 @@ import "./Category.scss";
 
 const Category = (props) => {
   const [catData, setCatData] = useState([]);
+
+  /**
+   * This is pseudo property that indicates an error, in this particular case the error wtih retrieving data from newsapi.org. If this is true, that means that error 429 was thrown and it will render
+   *  the component that warns there is something wrong with fetching data from server.
+   */
   const [error, setError] = useState(false);
+
+  /**
+   * These two properties are for expanding and collapsing full list of top news for category.
+   */
   const [expandCategory, setExpandCategory] = useState(false);
   const [hideCarousel, setHideCarousel] = useState(false);
 
@@ -20,6 +29,9 @@ const Category = (props) => {
 
   const apiKey = process.env.REACT_APP_NEWS_API_KEY;
 
+  /**
+   * Break points for carousel component. It indicates how many cards in this case will be shown on which resolution of the screen>
+   */
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
     { width: 410, itemsToShow: 2 },
@@ -28,6 +40,11 @@ const Category = (props) => {
     { width: 1030, itemsToShow: 5 },
   ];
 
+  /**
+   * For the sake of this public API and this particular case, this server call is separated from the news context and put here in local state of the component.
+   * This is a very bad solution because on every component re-rendering, we have an API call for each category. The only benefit of this solution is that it should prevent a memory leak, caused by updating state of unmounted component,
+   * by regulating its own local state. In real life scenario, I would suggest the change on the back end side, like adding one extra boolean parameter for categories in getAll request.
+   */
   useEffect(() => {
     if (props.categoryName) {
       const _category = props.categoryName.toLowerCase();
@@ -46,6 +63,9 @@ const Category = (props) => {
     };
   }, [apiKey, country, props.categoryName]);
 
+  /**
+   * Setting a full list to expanded or collapsed state.
+   */
   const toggleExpandCategory = () => {
     setHideCarousel(!hideCarousel);
     setExpandCategory(!expandCategory);
@@ -69,7 +89,7 @@ const Category = (props) => {
       {error && (
         <div className="category__problems-container">
           <Result
-            status="warning"
+            status="error"
             title="There are some problems with fetching news in this category. Try to reload the page."
             extra={
               <Button
