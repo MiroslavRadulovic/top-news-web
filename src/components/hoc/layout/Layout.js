@@ -10,22 +10,38 @@ const { Header, Content, Sider } = AntLayout;
 const { Search } = Input;
 
 const Layout = (props) => {
-  const [, country, setCountry, searchData] = useContext(NewsContext);
-  const [showSearch, setShowSearch] = useState(false);
+  /**
+   * Properties extracted from NewsContext.
+   */
+  const { country, setCountry, searchData } = useContext(NewsContext);
+
+  /**
+   * Initial state of side menu collapse
+   */
   const [collapsed, setCollapsed] = useState(true);
 
-  const toggle = () => {
-    setCollapsed(!collapsed);
+  /**
+   * This function toggles the collapse of side menu.
+   */
+  const toggle = () => setCollapsed(!collapsed);
+
+  /**
+   * This function accepts the value of search input. It calls searchData function from NewsContext that is responsible for
+   * retrieving data from server by that argument.
+   * @param {string} searchValue
+   */
+  const onSearch = (searchValue) => {
+    searchData(searchValue);
   };
 
-  const toggleShowSearch = () => setShowSearch(true);
-
-  const onSearch = (value) => {
-    searchData(value);
-  };
-
+  /**
+   * This function sets country to Great Britain.
+   */
   const setGB = () => setCountry("gb");
 
+  /**
+   * This function sets country to United States.
+   */
   const setUS = () => setCountry("us");
 
   return (
@@ -100,8 +116,16 @@ const Layout = (props) => {
               </Menu.Item>
             </Menu>
           </Col>
-          <Col xxl={12} xl={12} lg={12} md={10} sm={10} xs={10}>
-            <div className="layout__header-nav-search-bar-container">
+          <Col
+            className="layout__header-nav-search-bar-container"
+            xxl={12}
+            xl={12}
+            lg={12}
+            md={10}
+            sm={10}
+            xs={10}
+          >
+            {window.location.pathname === "/news" && (
               <Search
                 className="layout__header-nav-search-bar"
                 placeholder="Search"
@@ -110,7 +134,7 @@ const Layout = (props) => {
                 size="large"
                 onSearch={onSearch}
               />
-            </div>
+            )}
           </Col>
           <Col xxl={3} xl={4} lg={4} md={5} sm={6} xs={9}>
             <Menu
@@ -123,6 +147,10 @@ const Layout = (props) => {
                 className="layout__header-country-select-gb"
                 key="gb"
                 onClick={setGB}
+                disabled={
+                  window.location.pathname !== "/news" &&
+                  window.location.pathname !== "/categories"
+                }
               >
                 GB
               </Menu.Item>
@@ -130,6 +158,10 @@ const Layout = (props) => {
                 className="layout__header-country-select-us"
                 key="us"
                 onClick={setUS}
+                disabled={
+                  window.location.pathname !== "/news" &&
+                  window.location.pathname !== "/categories"
+                }
               >
                 US
               </Menu.Item>

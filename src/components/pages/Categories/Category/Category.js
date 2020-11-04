@@ -5,12 +5,13 @@ import { NewsContext } from "../../../../context/NewsContext";
 import { Result, Button } from "antd";
 
 import Card from "../../../common/Card/Card";
+import Loader from "../../../common/Loader/Loader";
 import "./Category.scss";
 
 const Category = (props) => {
   const [catData, setCatData] = useState([]);
   const [error, setError] = useState(false);
-  const [, country] = useContext(NewsContext);
+  const { country } = useContext(NewsContext);
 
   const apiKey = process.env.REACT_APP_NEWS_API_KEY;
 
@@ -59,7 +60,12 @@ const Category = (props) => {
           />
         </div>
       )}
-      {!error && (
+      {!error && catData && catData.length === 0 && (
+        <div className="category__loader-container">
+          <Loader tip={`Loading ${props.categoryName} news...`} />
+        </div>
+      )}
+      {!error && catData && catData.length > 0 && (
         <Carousel breakPoints={breakPoints}>
           {catData.map((item) => (
             <Card

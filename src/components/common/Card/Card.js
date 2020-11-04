@@ -24,6 +24,7 @@ const Card = (props) => {
               title: props.title,
               img: props.img,
               content: props.content,
+              disableCountries: true,
             },
           }}
         >

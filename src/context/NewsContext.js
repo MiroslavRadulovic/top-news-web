@@ -62,7 +62,7 @@ export const NewsContextProvider = (props) => {
 
   return (
     <NewsContext.Provider
-      value={[data, country, setCountry, searchData, empty]}
+      value={{ data, country, setCountry, searchData, empty }}
     >
       {props.children}
     </NewsContext.Provider>

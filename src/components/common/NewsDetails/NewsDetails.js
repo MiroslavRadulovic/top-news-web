@@ -6,8 +6,14 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 import "./NewsDetails.scss";
 
 const NewsDetails = (props) => {
+  /**
+   * Properties sent through the react router link state.
+   */
   const { title, content, img } = props.location.state;
 
+  /**
+   * This function does not accept any arguments and it gets us back to the previous page.
+   */
   const backClickHandler = () => {
     window.history.back();
   };

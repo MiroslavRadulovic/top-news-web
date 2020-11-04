@@ -7,9 +7,7 @@ import Loader from "../../common/Loader/Loader";
 import "./TopNews.scss";
 
 const TopNews = () => {
-  const [data, country, setCountry, searchData, empty] = useContext(
-    NewsContext
-  );
+  const { data, country, empty } = useContext(NewsContext);
 
   return (
     <div className="top-news">
@@ -40,7 +38,7 @@ const TopNews = () => {
       )}
       {data && data.length === 0 && !empty && (
         <div className="top-news__loader-container">
-          <Loader />
+          <Loader tip="Loading top news..." />
         </div>
       )}
       <div className="top-news__card-container">
