@@ -91,3 +91,15 @@
     opacity: 0;
   }
 }
+
+@media screen and (max-width: 756px) {
+  .category__card-container {
+    .category__card-container-all {
+      justify-content: center;
+
+      .category__card {
+        width: 330px;
+      }
+    }
+  }
+}
