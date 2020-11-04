@@ -4,7 +4,7 @@ import { LoadingOutlined } from "@ant-design/icons";
 import "./Loader.scss";
 
 /**
- * Functional component that takes tip as an argument. The tip is basically the text that is shown under that spinning loader.
+ * Functional component that takes tip as an argument. The tip is basically the text that is shown under the spinning loader.
  * @param {string} tip
  */
 

@@ -9,7 +9,6 @@ const Categories = () => {
     <div className="categories">
       {categoryList.map((category) => (
         <React.Fragment key={category}>
-          <h1>{category}</h1>
           <Category categoryName={category} />
         </React.Fragment>
       ))}
