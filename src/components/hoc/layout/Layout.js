@@ -72,7 +72,7 @@ const Layout = (props) => {
             })}
             key="1"
           >
-            <NavLink activeClassName="active-link" to="/news">
+            <NavLink activeClassName="active-link" to="/news" onClick={toggle}>
               Top News
             </NavLink>
           </Menu.Item>
@@ -83,7 +83,11 @@ const Layout = (props) => {
             })}
             key="2"
           >
-            <NavLink activeClassName="active-link" to="/categories">
+            <NavLink
+              activeClassName="active-link"
+              to="/categories"
+              onClick={toggle}
+            >
               Categories
             </NavLink>
           </Menu.Item>
@@ -169,14 +173,7 @@ const Layout = (props) => {
           </Col>
         </Row>
       </Header>
-      <Content
-        className={classnames({
-          "site-layout-content": true,
-          "site-layout-content-hidden": !collapsed,
-        })}
-      >
-        {props.children}
-      </Content>
+      <Content className="site-layout-content">{props.children}</Content>
     </AntLayout>
   );
 };

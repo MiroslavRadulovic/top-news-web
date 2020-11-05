@@ -10,7 +10,7 @@ import Card from "../../../common/Card/Card";
 import Loader from "../../../common/Loader/Loader";
 import "./Category.scss";
 
-const Category = (props) => {
+const Category = ({ categoryName }) => {
   const [catData, setCatData] = useState([]);
 
   /**
@@ -46,8 +46,8 @@ const Category = (props) => {
    * by regulating its own local state. In real life scenario, I would suggest the change on the back end side, like adding one extra boolean parameter for categories in getAll request.
    */
   useEffect(() => {
-    if (props.categoryName) {
-      const _category = props.categoryName.toLowerCase();
+    if (categoryName) {
+      const _category = categoryName.toLowerCase();
       const url = `top-headlines?country=${country}&category=${_category}&apiKey=${apiKey}`;
 
       instance
@@ -61,7 +61,7 @@ const Category = (props) => {
     return () => {
       setCatData([]);
     };
-  }, [apiKey, country, props.categoryName]);
+  }, [apiKey, country, categoryName]);
 
   /**
    * Setting a full list to expanded or collapsed state.
@@ -77,7 +77,7 @@ const Category = (props) => {
         title={expandCategory && hideCarousel ? "Show less" : "Show more"}
       >
         <h1 className="category__title" onClick={toggleExpandCategory}>
-          {props.categoryName}
+          {categoryName}
           {expandCategory && hideCarousel ? (
             <UpOutlined style={{ marginLeft: "5px", fontSize: "15px" }} />
           ) : (
@@ -104,8 +104,8 @@ const Category = (props) => {
         </div>
       )}
       {!error && catData && catData.length === 0 && (
-        <div className="category__loader-container">
-          <Loader tip={`Loading ${props.categoryName} news...`} />
+        <div data-testid="loading" className="category__loader-container">
+          <Loader tip={`Loading ${categoryName} news...`} />
         </div>
       )}
       {!expandCategory &&
@@ -113,7 +113,7 @@ const Category = (props) => {
         !error &&
         catData &&
         catData.length > 0 && (
-          <Carousel breakPoints={breakPoints}>
+          <Carousel data-testid="resolved" breakPoints={breakPoints}>
             {catData.map((item) => (
               <Card
                 key={item.title}
@@ -124,7 +124,7 @@ const Category = (props) => {
                 }
                 img={item.urlToImage}
                 content={item.content}
-                categoryName={props.categoryName}
+                categoryName={categoryName}
                 className="category__card"
               />
             ))}

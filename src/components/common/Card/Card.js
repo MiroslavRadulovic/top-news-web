@@ -23,8 +23,7 @@ const Card = (props) => {
             state: {
               title: props.title,
               img: props.img,
-              content: props.content,
-              disableCountries: true,
+              content: props.content
             },
           }}
         >
