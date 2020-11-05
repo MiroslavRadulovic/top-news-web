@@ -2,6 +2,8 @@
 
  **Version 1.0.0**
 
+ This is an application that show news articles using [NewsAPI](https://newsapi.org/) for retrieving data. Application is divided in two sections, top news(where all news are shown) and categories(news are sort and listed by category). There is also a functionality for changing the country that news are from, as well as a functionality for searching for a specific article in top news section.
+
 ---
 ### IMPORTANT!
 

@@ -7,6 +7,9 @@ import Loader from "../../common/Loader/Loader";
 import "./TopNews.scss";
 
 const TopNews = () => {
+  /**
+   * Properties extracted from news context.
+   */
   const { data, country, empty } = useContext(NewsContext);
 
   return (

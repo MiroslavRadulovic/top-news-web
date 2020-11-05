@@ -24,6 +24,11 @@ instance.interceptors.response.use(
   },
   function (error) {
     if (error.response && error.response.status) {
+      /**
+       * In this case, this is the only error with known status that is thrown by the API and it happens when the API key
+       * reaches the limit of requests per 12 hours. In real scenario, there should be a specific list of bugs that are coming
+       * from the server and also a suitable error message for each error.
+       */
       if (error.response.status === 429) {
         notification.error({
           message: "Error fetching news data!",
