@@ -6,10 +6,20 @@ export const NewsContext = createContext();
 export const NewsContextProvider = (props) => {
   const [data, setData] = useState([]);
   const [country, setCountry] = useState('gb');
+
+  /**
+   * This property indicates that the search term does not match any article and, because of that, the data array is empty and no articles will be shown on the top news page..
+   */
   const [empty, setEmpty] = useState(false);
 
+  /**
+   * NewsAPI key pulled out of the env file.
+   */
   const apiKey = process.env.REACT_APP_NEWS_API_KEY;
 
+  /**
+   * Initial retrieving of all the articles based on selected country (Default country is Great Britain).
+   */
   useEffect(() => {
     const url = `top-headlines?country=${country}&apiKey=${apiKey}`;
 

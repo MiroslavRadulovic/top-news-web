@@ -7,7 +7,7 @@
 ---
 ### IMPORTANT!
 
-For the sake of privacy and easier deployment to a production server, staging, etc., it is convenient to put some information into environment files. Before starting the project, it's required to create .env.local file which contains next:
+For the sake of privacy and easier deployment to a production server, staging, etc., it is convenient to put some information into environment files. Before starting the project, it's required to create .env file which contains next:
 
 ```bash
 REACT_APP_NEWS_API_KEY="<apiKey>"

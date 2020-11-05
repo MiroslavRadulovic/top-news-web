@@ -21,6 +21,9 @@
     display: flex;
     flex-wrap: wrap;
     padding-bottom: 30px;
+    animation-name: expand;
+    animation-duration: 500ms;
+    animation-fill-mode: both;
 
     .category__card {
       width: 255px;
@@ -38,17 +41,6 @@
         -webkit-line-clamp: 3;
       }
     }
-  }
-
-  .category__card-container-all-expand {
-    animation-name: expand;
-    animation-duration: 500ms;
-    animation-fill-mode: both;
-  }
-  .category__card-container-all-collapse {
-    animation-name: collapse;
-    animation-duration: 500ms;
-    animation-fill-mode: both;
   }
 
   .category__card {

@@ -23,6 +23,9 @@ instance.interceptors.response.use(
     return response;
   },
   function (error) {
+    /**
+     * Error messages sorted by status code and show in form of notifications.
+     */
     if (error.response && error.response.status) {
       if (error.response.status === 400) {
         notification.error({
