@@ -1,7 +1,7 @@
-import React from "react";
-import { Card as AntCard, Tooltip } from "antd";
-import { Link } from "react-router-dom";
-import Placeholder from "../../../assets/Images/news-placeholder.png";
+import React from 'react';
+import { Card as AntCard, Tooltip } from 'antd';
+import { Link } from 'react-router-dom';
+import Placeholder from '../../../assets/Images/news-placeholder.png';
 
 const { Meta } = AntCard;
 
@@ -18,12 +18,12 @@ const Card = (props) => {
         <Link
           to={{
             pathname: `/${
-              props.categoryName ? "categories" : "news"
+              props.categoryName ? 'categories' : 'news'
             }/${encodeURI(props.title)}`,
             state: {
               title: props.title,
               img: props.img,
-              content: props.content
+              content: props.content,
             },
           }}
         >

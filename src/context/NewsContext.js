@@ -1,11 +1,11 @@
-import React, { createContext, useEffect, useState } from "react";
-import instance from "../lib/axiosConfig";
+import React, { createContext, useEffect, useState } from 'react';
+import instance from '../lib/axiosConfig';
 
 export const NewsContext = createContext();
 
 export const NewsContextProvider = (props) => {
   const [data, setData] = useState([]);
-  const [country, setCountry] = useState("gb");
+  const [country, setCountry] = useState('gb');
   const [empty, setEmpty] = useState(false);
 
   const apiKey = process.env.REACT_APP_NEWS_API_KEY;
@@ -21,7 +21,7 @@ export const NewsContextProvider = (props) => {
         }
         setData(response.data.articles);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.error(error));
   }, [apiKey, country]);
 
   /**
@@ -46,7 +46,7 @@ export const NewsContextProvider = (props) => {
           setData(response.data.articles);
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.error(error));
   };
 
   return (

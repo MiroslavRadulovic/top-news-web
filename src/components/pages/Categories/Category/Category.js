@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useContext } from "react";
-import instance from "../../../../lib/axiosConfig";
-import Carousel from "react-elastic-carousel";
-import { NewsContext } from "../../../../context/NewsContext";
-import { Result, Button, Tooltip } from "antd";
-import { DownOutlined, UpOutlined } from "@ant-design/icons";
-import classnames from "classnames";
+import React, { useState, useEffect, useContext } from 'react';
+import instance from '../../../../lib/axiosConfig';
+import Carousel from 'react-elastic-carousel';
+import { NewsContext } from '../../../../context/NewsContext';
+import { Result, Button, Tooltip } from 'antd';
+import { DownOutlined, UpOutlined } from '@ant-design/icons';
+import classnames from 'classnames';
 
-import Card from "../../../common/Card/Card";
-import Loader from "../../../common/Loader/Loader";
-import "./Category.scss";
+import Card from '../../../common/Card/Card';
+import Loader from '../../../common/Loader/Loader';
+import './Category.scss';
 
 const Category = ({ categoryName }) => {
   const [catData, setCatData] = useState([]);
@@ -74,14 +74,14 @@ const Category = ({ categoryName }) => {
   return (
     <div className="category__card-container">
       <Tooltip
-        title={expandCategory && hideCarousel ? "Show less" : "Show more"}
+        title={expandCategory && hideCarousel ? 'Show less' : 'Show more'}
       >
         <h1 className="category__title" onClick={toggleExpandCategory}>
           {categoryName}
           {expandCategory && hideCarousel ? (
-            <UpOutlined style={{ marginLeft: "5px", fontSize: "15px" }} />
+            <UpOutlined style={{ marginLeft: '5px', fontSize: '15px' }} />
           ) : (
-            <DownOutlined style={{ marginLeft: "5px", fontSize: "15px" }} />
+            <DownOutlined style={{ marginLeft: '5px', fontSize: '15px' }} />
           )}
         </h1>
       </Tooltip>
@@ -120,7 +120,7 @@ const Category = ({ categoryName }) => {
                 title={item.title}
                 description={
                   item.description ||
-                  "No description available for this article."
+                  'No description available for this article.'
                 }
                 img={item.urlToImage}
                 content={item.content}
@@ -133,10 +133,10 @@ const Category = ({ categoryName }) => {
       {expandCategory && hideCarousel && (
         <div
           className={classnames({
-            "category__card-container-all": true,
-            "category__card-container-all-expand":
+            'category__card-container-all': true,
+            'category__card-container-all-expand':
               expandCategory && hideCarousel,
-            "category__card-container-all-collapse": !(
+            'category__card-container-all-collapse': !(
               expandCategory && hideCarousel
             ),
           })}
@@ -148,7 +148,7 @@ const Category = ({ categoryName }) => {
                 title={item.title}
                 description={
                   item.description ||
-                  "No description available for this article."
+                  'No description available for this article.'
                 }
                 img={item.urlToImage}
                 content={item.content}

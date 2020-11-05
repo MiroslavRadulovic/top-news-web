@@ -1,7 +1,6 @@
-import React from "react";
-import { Spin } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
-import "./Loader.scss";
+import React from 'react';
+import { Spin } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 
 /**
  * Functional component that takes tip as an argument. The tip is basically the text that is shown under the spinning loader.
@@ -13,7 +12,7 @@ const Loader = ({ tip }) => {
     <Spin
       spinning
       size="large"
-      indicator={<LoadingOutlined style={{ fontSize: "30px" }} />}
+      indicator={<LoadingOutlined style={{ fontSize: '30px' }} />}
       tip={tip}
     />
   );

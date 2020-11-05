@@ -1,12 +1,11 @@
-import { Route, Switch, Redirect } from "react-router-dom";
-import { NewsContextProvider } from "./context/NewsContext";
-import "./App.scss";
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { NewsContextProvider } from './context/NewsContext';
 
-import Layout from "./components/hoc/layout/Layout";
+import Layout from './components/hoc/layout/Layout';
 
-import TopNews from "./components/pages/TopNews/TopNews";
-import Categories from "./components/pages/Categories/Categories";
-import NewsDetails from "./components/common/NewsDetails/NewsDetails";
+import TopNews from './components/pages/TopNews/TopNews';
+import Categories from './components/pages/Categories/Categories';
+import NewsDetails from './components/common/NewsDetails/NewsDetails';
 
 function App() {
   return (

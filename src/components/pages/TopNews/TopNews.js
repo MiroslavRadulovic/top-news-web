@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import { NewsContext } from "../../../context/NewsContext";
-import { Empty, Result, Button } from "antd";
+import React, { useContext } from 'react';
+import { NewsContext } from '../../../context/NewsContext';
+import { Empty, Result, Button } from 'antd';
 
-import Card from "../../common/Card/Card";
-import Loader from "../../common/Loader/Loader";
-import "./TopNews.scss";
+import Card from '../../common/Card/Card';
+import Loader from '../../common/Loader/Loader';
+import './TopNews.scss';
 
 const TopNews = () => {
   /**
@@ -15,12 +15,12 @@ const TopNews = () => {
   return (
     <div className="top-news">
       <h1 className="top-news__title">
-        Top News from {country === "gb" ? "Great Britain" : "United States"}
+        Top News from {country === 'gb' ? 'Great Britain' : 'United States'}
       </h1>
       {!data && (
         <div className="top-news__problems-container">
           <Result
-            status="warning"
+            status="error"
             title="There are some problems with fetching top news. Try to reload the page."
             extra={
               <Button
@@ -51,7 +51,7 @@ const TopNews = () => {
               key={item.title}
               title={item.title}
               description={
-                item.description || "No description available for this article."
+                item.description || 'No description available for this article.'
               }
               img={item.urlToImage}
               content={item.content}

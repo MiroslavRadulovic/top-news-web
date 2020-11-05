@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
-import { Layout as AntLayout, Menu, Input, Row, Col } from "antd";
-import { MenuOutlined } from "@ant-design/icons";
-import { NavLink } from "react-router-dom";
-import { NewsContext } from "../../../context/NewsContext";
-import classnames from "classnames";
-import "./Layout.scss";
+import React, { useState, useContext } from 'react';
+import { Layout as AntLayout, Menu, Input, Row, Col } from 'antd';
+import { MenuOutlined } from '@ant-design/icons';
+import { NavLink } from 'react-router-dom';
+import { NewsContext } from '../../../context/NewsContext';
+import classnames from 'classnames';
+import './Layout.scss';
 
 const { Header, Content, Sider } = AntLayout;
 const { Search } = Input;
@@ -37,19 +37,19 @@ const Layout = (props) => {
   /**
    * This function sets country to Great Britain.
    */
-  const setGB = () => setCountry("gb");
+  const setGB = () => setCountry('gb');
 
   /**
    * This function sets country to United States.
    */
-  const setUS = () => setCountry("us");
+  const setUS = () => setCountry('us');
 
   return (
     <AntLayout className="layout">
       <Sider
         className={classnames({
           layout__sider: true,
-          "sider-not-collapsed": !collapsed,
+          'sider-not-collapsed': !collapsed,
         })}
         trigger={null}
         collapsible
@@ -63,12 +63,12 @@ const Layout = (props) => {
           className="layout__sider-nav"
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={["1"]}
+          defaultSelectedKeys={['1']}
         >
           <Menu.Item
             className={classnames({
-              "layout__sider-nav-top-news": true,
-              "layout__sider-nav-top-news-fixed": !collapsed,
+              'layout__sider-nav-top-news': true,
+              'layout__sider-nav-top-news-fixed': !collapsed,
             })}
             key="1"
           >
@@ -78,8 +78,8 @@ const Layout = (props) => {
           </Menu.Item>
           <Menu.Item
             className={classnames({
-              "layout__sider-nav-categories": true,
-              "layout__sider-nav-categories-fixed": !collapsed,
+              'layout__sider-nav-categories': true,
+              'layout__sider-nav-categories-fixed': !collapsed,
             })}
             key="2"
           >
@@ -97,7 +97,7 @@ const Layout = (props) => {
         <Row gutter={[16, 24]} align="middle" justify="space-between">
           <Col xxl={0} xl={0} lg={0} md={2} sm={2} xs={2}>
             {React.createElement(MenuOutlined, {
-              className: "trigger",
+              className: 'trigger',
               onClick: toggle,
             })}
           </Col>
@@ -106,7 +106,7 @@ const Layout = (props) => {
               className="layout__header-nav"
               theme="dark"
               mode="horizontal"
-              defaultSelectedKeys={["1"]}
+              defaultSelectedKeys={['1']}
             >
               <Menu.Item className="layout__header-nav-top-news" key="1">
                 <NavLink activeClassName="active-link" to="/news">
@@ -129,7 +129,7 @@ const Layout = (props) => {
             sm={10}
             xs={10}
           >
-            {window.location.pathname === "/news" && (
+            {window.location.pathname === '/news' && (
               <Search
                 className="layout__header-nav-search-bar"
                 placeholder="Search"
@@ -152,8 +152,8 @@ const Layout = (props) => {
                 key="gb"
                 onClick={setGB}
                 disabled={
-                  window.location.pathname !== "/news" &&
-                  window.location.pathname !== "/categories"
+                  window.location.pathname !== '/news' &&
+                  window.location.pathname !== '/categories'
                 }
               >
                 GB
@@ -163,8 +163,8 @@ const Layout = (props) => {
                 key="us"
                 onClick={setUS}
                 disabled={
-                  window.location.pathname !== "/news" &&
-                  window.location.pathname !== "/categories"
+                  window.location.pathname !== '/news' &&
+                  window.location.pathname !== '/categories'
                 }
               >
                 US

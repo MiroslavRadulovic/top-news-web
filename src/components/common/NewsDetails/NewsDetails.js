@@ -1,9 +1,9 @@
-import React from "react";
-import { Image, Row, Col } from "antd";
-import Placeholder from "../../../assets/Images/news-placeholder.png";
-import { ArrowLeftOutlined } from "@ant-design/icons";
+import React from 'react';
+import { Image, Row, Col } from 'antd';
+import Placeholder from '../../../assets/Images/news-placeholder.png';
+import { ArrowLeftOutlined } from '@ant-design/icons';
 
-import "./NewsDetails.scss";
+import './NewsDetails.scss';
 
 const NewsDetails = (props) => {
   /**
@@ -26,7 +26,7 @@ const NewsDetails = (props) => {
         gutter={[16, 24]}
         onClick={backClickHandler}
       >
-        <ArrowLeftOutlined style={{ fontSize: "17px" }} />
+        <ArrowLeftOutlined style={{ fontSize: '17px' }} />
         <span>Back</span>
       </Row>
       <Row className="news-details__article-container" gutter={[16, 24]}>
@@ -39,7 +39,7 @@ const NewsDetails = (props) => {
               <h1>{title}</h1>
             </Col>
             <Col span={24}>
-              <p>{content ? content.split("[")[0] : "No content available."}</p>
+              <p>{content ? content.split('[')[0] : 'No content available.'}</p>
             </Col>
           </Row>
         </Col>
