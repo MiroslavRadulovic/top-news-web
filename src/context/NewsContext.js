@@ -5,7 +5,7 @@ export const NewsContext = createContext();
 
 export const NewsContextProvider = (props) => {
   const [data, setData] = useState([]);
-  const [country, setCountry] = useState('gb');
+  const [country, setCountry] = useState(null);
 
   /**
    * This property indicates that the search term does not match any article and, because of that, the data array is empty and no articles will be shown on the top news page..
@@ -21,17 +21,21 @@ export const NewsContextProvider = (props) => {
    * Initial retrieving of all the articles based on selected country (Default country is Great Britain).
    */
   useEffect(() => {
-    const url = `top-headlines?country=${country}&apiKey=${apiKey}`;
+    loadCountry();
 
-    instance
-      .get(url)
-      .then((response) => {
-        if (!response) {
-          setData(null);
-        }
-        setData(response.data.articles);
-      })
-      .catch((error) => console.error(error));
+    if (country) {
+      const url = `top-headlines?country=${country}&apiKey=${apiKey}`;
+
+      instance
+        .get(url)
+        .then((response) => {
+          if (!response) {
+            setData(null);
+          }
+          setData(response.data.articles);
+        })
+        .catch((error) => console.error(error));
+    }
   }, [apiKey, country]);
 
   /**
@@ -59,9 +63,31 @@ export const NewsContextProvider = (props) => {
       .catch((error) => console.error(error));
   };
 
+  const loadCountry = () => {
+    try {
+      const country = localStorage.getItem('country') || 'gb';
+      if (country) {
+        setCountry(country);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const chooseCountry = (_country) => {
+    localStorage.setItem('country', _country);
+  };
+
   return (
     <NewsContext.Provider
-      value={{ data, country, setCountry, searchData, empty }}
+      value={{
+        data,
+        country,
+        searchData,
+        empty,
+        loadCountry,
+        chooseCountry,
+      }}
     >
       {props.children}
     </NewsContext.Provider>

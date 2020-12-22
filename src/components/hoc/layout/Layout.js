@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Layout as AntLayout, Menu, Input, Row, Col } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
 import { NavLink } from 'react-router-dom';
@@ -13,12 +13,23 @@ const Layout = (props) => {
   /**
    * Properties extracted from NewsContext.
    */
-  const { country, setCountry, searchData } = useContext(NewsContext);
+  const { country, searchData, loadCountry, chooseCountry } = useContext(
+    NewsContext
+  );
 
   /**
    * Initial state of side menu collapse
    */
   const [collapsed, setCollapsed] = useState(true);
+
+  useEffect(() => {
+    return () => {
+      /**
+       * Removes country item from local storage on component unmount.
+       */
+      localStorage.removeItem('country');
+    };
+  }, []);
 
   /**
    * This function toggles the collapse of side menu.
@@ -35,14 +46,12 @@ const Layout = (props) => {
   };
 
   /**
-   * This function sets country to Great Britain.
+   * This function sets country to Great Britain or USA.
    */
-  const setGB = () => setCountry('gb');
-
-  /**
-   * This function sets country to United States.
-   */
-  const setUS = () => setCountry('us');
+  const changeCountryHandler = async (country) => {
+    await chooseCountry(country);
+    await loadCountry();
+  };
 
   return (
     <AntLayout className="layout">
@@ -140,37 +149,39 @@ const Layout = (props) => {
               />
             )}
           </Col>
-          <Col xxl={3} xl={4} lg={4} md={5} sm={6} xs={9}>
-            <Menu
-              className="layout__header-country-select"
-              defaultSelectedKeys={[country]}
-              theme="dark"
-              mode="horizontal"
-            >
-              <Menu.Item
-                className="layout__header-country-select-gb"
-                key="gb"
-                onClick={setGB}
-                disabled={
-                  window.location.pathname !== '/news' &&
-                  window.location.pathname !== '/categories'
-                }
+          {country && (
+            <Col xxl={3} xl={4} lg={4} md={5} sm={6} xs={9}>
+              <Menu
+                className="layout__header-country-select"
+                defaultSelectedKeys={[country]}
+                theme="dark"
+                mode="horizontal"
               >
-                GB
-              </Menu.Item>
-              <Menu.Item
-                className="layout__header-country-select-us"
-                key="us"
-                onClick={setUS}
-                disabled={
-                  window.location.pathname !== '/news' &&
-                  window.location.pathname !== '/categories'
-                }
-              >
-                US
-              </Menu.Item>
-            </Menu>
-          </Col>
+                <Menu.Item
+                  className="layout__header-country-select-gb"
+                  key="gb"
+                  onClick={() => changeCountryHandler('gb')}
+                  disabled={
+                    window.location.pathname !== '/news' &&
+                    window.location.pathname !== '/categories'
+                  }
+                >
+                  GB
+                </Menu.Item>
+                <Menu.Item
+                  className="layout__header-country-select-us"
+                  key="us"
+                  onClick={() => changeCountryHandler('us')}
+                  disabled={
+                    window.location.pathname !== '/news' &&
+                    window.location.pathname !== '/categories'
+                  }
+                >
+                  US
+                </Menu.Item>
+              </Menu>
+            </Col>
+          )}
         </Row>
       </Header>
       <Content className="site-layout-content">{props.children}</Content>
