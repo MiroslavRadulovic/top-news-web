@@ -1,17 +1,20 @@
 import React from 'react';
 import { categoryList } from './categoryList';
 
+import Layout from '../../hoc/layout/Layout';
 import Category from './Category/Category';
 
 const Categories = () => {
   return (
-    <>
-      {categoryList.map((category) => (
-        <React.Fragment key={category}>
-          <Category categoryName={category} />
-        </React.Fragment>
-      ))}
-    </>
+    <Layout>
+      <div className="categories">
+        {categoryList.map((category) => (
+          <React.Fragment key={category}>
+            <Category categoryName={category} />
+          </React.Fragment>
+        ))}
+      </div>
+    </Layout>
   );
 };
 

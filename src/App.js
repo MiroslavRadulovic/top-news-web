@@ -1,23 +1,23 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { NewsContextProvider } from './context/NewsContext';
 
-import Layout from './components/hoc/layout/Layout';
-
 import TopNews from './components/pages/TopNews/TopNews';
 import Categories from './components/pages/Categories/Categories';
 import NewsDetails from './components/common/NewsDetails/NewsDetails';
+import NotFound from './components/common/NotFound/NotFound';
 
 function App() {
   return (
     <NewsContextProvider>
       <Switch>
-        <Layout>
-          <Route exact path="/news" component={TopNews} />
-          <Route path="/news/:id" component={NewsDetails} />
-          <Route exact path="/categories" component={Categories} />
-          <Route path="/categories/:id" component={NewsDetails} />
+        <Route exact path="/">
           <Redirect to="/news" />
-        </Layout>
+        </Route>
+        <Route exact path="/news" component={TopNews} />
+        <Route path="/news/:id" component={NewsDetails} />
+        <Route exact path="/categories" component={Categories} />
+        <Route path="/categories/:id" component={NewsDetails} />
+        <Route component={NotFound} />
       </Switch>
     </NewsContextProvider>
   );
