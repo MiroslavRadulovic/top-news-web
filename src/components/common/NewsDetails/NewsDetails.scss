@@ -23,13 +23,13 @@
       min-width: 200px;
     }
   }
+}
 
-  .news-details__loader-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 85vh;
-  }
+.news-details__error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 85vh;
 }
 
 @media screen and (max-width: 692px) {
