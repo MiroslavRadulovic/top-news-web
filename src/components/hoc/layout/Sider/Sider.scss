@@ -1,0 +1,40 @@
+.sider {
+  margin-top: 60px;
+
+  .active-link {
+    color: #1890ff !important;
+  }
+
+  .sider-nav {
+    li:hover,
+    li:active,
+    .ant-menu-item-selected {
+      background: transparent !important;
+      color: #1890ff !important;
+    }
+
+    .sider-nav-top-news-fixed,
+    .sider-nav-categories-fixed {
+      a {
+        position: fixed;
+      }
+    }
+
+    li a:hover {
+      background: transparent;
+      color: #1890ff !important;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .sider {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 692px) {
+  .sider-not-collapsed {
+    min-width: 100% !important;
+  }
+}

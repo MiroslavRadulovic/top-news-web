@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 const Loader = ({ tip }) => {
   return (
     <Spin
+      title="loader"
       spinning
       size="large"
       indicator={<LoadingOutlined style={{ fontSize: '30px' }} />}
