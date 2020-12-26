@@ -1,16 +1,30 @@
 .sider {
   margin-top: 60px;
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(#7ed56f, 0.8),
+    rgba(#28b485, 0.8)
+  ) !important;
 
   .active-link {
-    color: #1890ff !important;
+    color: #ffb900 !important;
   }
 
   .sider-nav {
+    background-color: transparent !important;
+    margin-top: 50px;
+
+    li {
+      border-left: 4px solid transparent;
+    }
+
     li:hover,
     li:active,
     .ant-menu-item-selected {
+      border-left: 4px solid #ffb900;
       background: transparent !important;
-      color: #1890ff !important;
+      color: #fff !important;
+      transition: all 0.3s;
     }
 
     .sider-nav-top-news-fixed,
@@ -22,7 +36,7 @@
 
     li a:hover {
       background: transparent;
-      color: #1890ff !important;
+      color: #ffb900 !important;
     }
   }
 }

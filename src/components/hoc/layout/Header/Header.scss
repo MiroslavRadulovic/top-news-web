@@ -4,23 +4,30 @@
   height: 67px;
   z-index: 1;
   min-width: 400px;
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(#7ed56f, 0.8),
+    rgba(#28b485, 0.8)
+  ) !important;
 
   .active-link {
-    color: #1890ff !important;
+    color: #ffb900 !important;
   }
 
   .header__nav,
   .header__country-select {
+    background-color: transparent !important;
+
     li:hover,
     li:active,
     .ant-menu-item-selected {
       background: transparent !important;
-      color: #1890ff !important;
+      color: #ffb900 !important;
     }
 
     li a:hover {
       background: transparent;
-      color: #1890ff !important;
+      color: #ffb900 !important;
     }
 
     .header__nav-search {
@@ -29,7 +36,7 @@
       .ant-menu-item-selected {
         &:hover {
           background: transparent;
-          color: #1890ff;
+          color: #ffb900;
         }
       }
     }
@@ -39,6 +46,25 @@
     display: flex;
     align-items: center;
     max-width: 500px;
+
+    .ant-input-search-button {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba(#ffb900, 0.8),
+        rgba(#ff7730, 0.8)
+      ) !important;
+      border: none;
+    }
+
+    .ant-input-affix-wrapper-focused {
+      border-color: #ffb900;
+    }
+
+    .ant-input-affix-wrapper {
+      &:hover {
+        border-color: #ffb900;
+      }
+    }
   }
 }
 

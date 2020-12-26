@@ -7,41 +7,12 @@
     margin-top: 20px;
     padding-left: 18px;
     color: rgba(255, 255, 255, 0.65);
-
+  
     &:hover {
       transition: 0.3s;
-      color: #1890ff;
+      color: #ffb900;
     }
   }
-
-  // .layout__sider {
-  //   margin-top: 60px;
-
-  //   .active-link {
-  //     color: #1890ff;
-  //   }
-
-  //   .layout__sider-nav {
-  //     li:hover,
-  //     li:active,
-  //     .ant-menu-item-selected {
-  //       background: transparent;
-  //       color: #1890ff;
-  //     }
-
-  //     .layout__sider-nav-top-news-fixed,
-  //     .layout__sider-nav-categories-fixed {
-  //       a {
-  //         position: fixed;
-  //       }
-  //     }
-
-  //     li a:hover {
-  //       background: transparent;
-  //       color: #1890ff !important;
-  //     }
-  //   }
-  // }
 
   .site-layout-content {
     padding: 0 70px;
